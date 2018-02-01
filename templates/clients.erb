@@ -1,0 +1,14 @@
+; Use it for client mode
+;client = yes
+; Service-level configuration
+[ldaps-1]
+client = yes
+accept = 127.0.0.1:998
+connect = ATLAS-DC2008-3.atlasit.local:636
+TIMEOUTclose = 0
+[ldaps-2]
+client = yes
+accept  = 127.0.0.1:995
+connect = ATLAS-DC2008-2.atlasit.local:636
+TIMEOUTclose = 0
+; vim:ft=dosini

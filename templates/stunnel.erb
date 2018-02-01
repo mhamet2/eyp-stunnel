@@ -1,0 +1,42 @@
+#
+# puppet managed - do not edit
+#
+
+;cert = /etc/stunnel/mail.crt
+;key = /etc/stunnel/mail.key
+;cert = /etc/stunnel/stunnel.pem
+; Some security enhancements for UNIX systems - comment them out on Win32
+chroot = <%= @chroot_path %>
+setuid = stunnel
+setgid = stunnel
+; PID is created inside chroot jail
+pid = /stunnel.pid
+; Some performance tunings
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+;socket = a:SO_REUSEADDR=no
+;socket = l:SO_LINGER=1:60
+;socket = r:SO_OOBINLINE=yes
+;compression = rle
+; Workaround for Eudora bug
+;options = DONT_INSERT_EMPTY_FRAGMENTS
+;options = NO_SSLv3
+; Authentication stuff
+verify = 0
+;sslVersion = all
+;options = NO_SSLv2
+;options = NO_SSLv3
+; Don't forget to c_rehash CApath
+; CApath is located inside chroot jail
+;CApath = /certs
+; It's often easier to use CAfile
+;CAfile = /etc/stunnel/stunnel.pem
+;CAfile = /usr/share/ssl/certs/ca-bundle.crt
+; Don't forget to c_rehash CRLpath
+; CRLpath is located inside chroot jail
+;CRLpath = /crls
+; Alternatively you can use CRLfile
+;CRLfile = /etc/stunnel/crls.pem
+; Some debugging stuff useful for troubleshooting
+debug = 1
+output = /stunnel.log
