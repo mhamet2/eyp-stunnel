@@ -7,6 +7,8 @@ class stunnel::params {
   {
     'redhat':
     {
+      $package_name=[ 'stunnel' ]
+
       case $::operatingsystemrelease
       {
         /^[5-7].*$/:
@@ -21,6 +23,7 @@ class stunnel::params {
       {
         'Ubuntu':
         {
+          $package_name=[ 'stunnel' ]
           case $::operatingsystemrelease
           {
             /^14.*$/:

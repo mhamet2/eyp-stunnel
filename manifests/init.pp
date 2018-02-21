@@ -7,12 +7,10 @@ class stunnel(
                             $service_enable        = true,
                             $chroot_path           = '/var/run/stunnel'
                           ) inherits stunnel::params{
-
-  validate_re($package_ensure, [ '^present$', '^installed$', '^absent$', '^purged$', '^held$', '^latest$' ], 'Not a supported package_ensure: present/absent/purged/held/latest')
-
-  class { '::stunnel::install': }
-  -> class { '::stunnel::config': }
-  ~> class { '::stunnel::service': }
-  -> Class['::stunnel']
+  
+  class { '::stunnel::install': } ->
+  class { '::stunnel::config': } ~>
+  class { '::stunnel::service': } ->
+  Class['::stunnel']
 
 }
